@@ -1,14 +1,10 @@
 import Head from "next/head";
 import Layout from "../../components/layout";
-import { getSortedPostsData } from "../../utils/posts";
+import { getPostData, getSortedPostsData } from "../../utils/posts";
 import utilStyles from "../../styles/utils.module.css";
 
 export async function getStaticProps({ params }) {
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${params.id}`
-  );
-  const postData = await res.json();
-
+  const postData = await getPostData(params.id);
   return { props: { postData } };
 }
 
