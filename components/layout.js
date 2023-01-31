@@ -68,8 +68,8 @@ export default function Layout({ children, home }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
-          <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
+          <i className={styles.footerText}>By Patrick &#169; 2023</i>
+          {/* <img src="/vercel.svg" alt="Vercel" className={styles.logo} /> */}
         </a>
       </footer>
     </div>
