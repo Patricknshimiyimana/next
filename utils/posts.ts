@@ -1,4 +1,4 @@
-export async function getPostData(id: number) {
+export async function getPostData(id: string) {
   let data: any = null;
   try {
     const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
