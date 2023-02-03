@@ -17,7 +17,11 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-export default function Post({ postData }) {
+export default function Post({
+  postData,
+}: {
+  postData: { title: string; body: string };
+}) {
   return (
     <Layout>
       <Head>
