@@ -2,22 +2,27 @@ import Head from "next/head";
 import Layout from "../../components/layout";
 import { getPostData, getSortedPostsData } from "../../utils/posts";
 import utilStyles from "../../styles/utils.module.css";
+import { GetStaticPaths, GetStaticProps } from "next";
 
-export async function getStaticProps({ params }) {
-  const postData = await getPostData(params.id);
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const postData = await getPostData(params?.id as string);
   return { props: { postData } };
-}
+};
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getSortedPostsData();
   const paths = posts.map((post) => {
     return { params: { id: post.id.toString(), title: post.title } };
   });
 
   return { paths, fallback: false };
-}
+};
 
-export default function Post({ postData }) {
+export default function Post({
+  postData,
+}: {
+  postData: { title: string; body: string };
+}) {
   return (
     <Layout>
       <Head>
